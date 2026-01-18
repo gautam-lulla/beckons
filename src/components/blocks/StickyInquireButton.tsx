@@ -39,14 +39,6 @@ export function StickyInquireButton({
           // Check if section has a dark background (hero or lodge carousel)
           // These sections have full-bleed images
           const hasImage = section.querySelector("img, video");
-          const hasDarkBg =
-            section.classList.contains("bg-charcoal") ||
-            section.classList.contains("bg-black") ||
-            (hasImage && !section.classList.contains("bg-limestone"));
-
-          // Special check: if section has relative positioning and an image filling it
-          const computedStyle = window.getComputedStyle(section);
-          const bgColor = computedStyle.backgroundColor;
 
           // Check if it's a section with a background image (hero, carousel)
           if (

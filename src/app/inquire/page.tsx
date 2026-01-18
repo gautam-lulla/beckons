@@ -62,6 +62,7 @@ export default async function InquirePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
             <label
+              htmlFor="firstName"
               className="body-xs text-charcoal block mb-2"
               data-cms-entry={entry}
               data-cms-field="firstNameLabel"
@@ -69,6 +70,8 @@ export default async function InquirePage() {
               {data.firstNameLabel}
             </label>
             <input
+              id="firstName"
+              name="firstName"
               type="text"
               required
               className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy"
@@ -76,6 +79,7 @@ export default async function InquirePage() {
           </div>
           <div>
             <label
+              htmlFor="lastName"
               className="body-xs text-charcoal block mb-2"
               data-cms-entry={entry}
               data-cms-field="lastNameLabel"
@@ -83,6 +87,8 @@ export default async function InquirePage() {
               {data.lastNameLabel}
             </label>
             <input
+              id="lastName"
+              name="lastName"
               type="text"
               required
               className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy"
@@ -94,6 +100,7 @@ export default async function InquirePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
             <label
+              htmlFor="email"
               className="body-xs text-charcoal block mb-2"
               data-cms-entry={entry}
               data-cms-field="contactEmailLabel"
@@ -101,6 +108,8 @@ export default async function InquirePage() {
               {data.contactEmailLabel}
             </label>
             <input
+              id="email"
+              name="email"
               type="email"
               required
               className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy"
@@ -108,6 +117,7 @@ export default async function InquirePage() {
           </div>
           <div>
             <label
+              htmlFor="phone"
               className="body-xs text-charcoal block mb-2"
               data-cms-entry={entry}
               data-cms-field="contactPhoneLabel"
@@ -115,6 +125,8 @@ export default async function InquirePage() {
               {data.contactPhoneLabel}
             </label>
             <input
+              id="phone"
+              name="phone"
               type="tel"
               required
               className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy"
@@ -126,6 +138,7 @@ export default async function InquirePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
             <label
+              htmlFor="country"
               className="body-xs text-charcoal block mb-2"
               data-cms-entry={entry}
               data-cms-field="countryRegionLabel"
@@ -133,6 +146,8 @@ export default async function InquirePage() {
               {data.countryRegionLabel}
             </label>
             <select
+              id="country"
+              name="country"
               required
               className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy"
             >
@@ -141,6 +156,7 @@ export default async function InquirePage() {
           </div>
           <div>
             <label
+              htmlFor="region"
               className="body-xs text-charcoal block mb-2"
               data-cms-entry={entry}
               data-cms-field="countryRegionLabel"
@@ -148,6 +164,8 @@ export default async function InquirePage() {
               {data.countryRegionLabel}
             </label>
             <select
+              id="region"
+              name="region"
               required
               className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy"
             >
@@ -159,6 +177,7 @@ export default async function InquirePage() {
         {/* Your Enquiry */}
         <div className="mb-8">
           <label
+            htmlFor="enquiry"
             className="body-xs text-charcoal block mb-2"
             data-cms-entry={entry}
             data-cms-field="yourEnquiryLabel"
@@ -166,6 +185,8 @@ export default async function InquirePage() {
             {data.yourEnquiryLabel}
           </label>
           <textarea
+            id="enquiry"
+            name="enquiry"
             required
             rows={4}
             className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy resize-none"
@@ -173,9 +194,11 @@ export default async function InquirePage() {
         </div>
 
         {/* Subscribe Checkbox */}
-        <label className="flex items-center gap-3 mb-6 cursor-pointer">
+        <label htmlFor="subscribe" className="flex items-center gap-3 mb-6 cursor-pointer">
           <div className="relative w-5 h-5 shrink-0">
             <input
+              id="subscribe"
+              name="subscribe"
               type="checkbox"
               className="peer absolute inset-0 opacity-0 cursor-pointer"
             />

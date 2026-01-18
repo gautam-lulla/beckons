@@ -17,8 +17,29 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Beckons",
+  title: {
+    default: "Beckons",
+    template: "%s | Beckons",
+  },
   description: "A global curator of remarkable journeys of discovery",
+  metadataBase: new URL("https://beckons.com"),
+  openGraph: {
+    title: "Beckons",
+    description: "A global curator of remarkable journeys of discovery",
+    url: "https://beckons.com",
+    siteName: "Beckons",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Beckons",
+    description: "A global curator of remarkable journeys of discovery",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

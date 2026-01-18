@@ -10,15 +10,6 @@ import { getAuthenticatedClient } from "../apollo-client";
 
 const ORGANIZATION_ID = process.env.CMS_ORGANIZATION_ID;
 
-interface LoginResult {
-  accessToken: string;
-  refreshToken: string;
-  user: {
-    id: string;
-    email: string;
-  };
-}
-
 interface ContentTypeField {
   slug: string;
   name: string;

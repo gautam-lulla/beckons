@@ -4,13 +4,11 @@ import Image from "next/image";
 interface VideoMaskSectionProps {
   entry: string;
   imageUrl: string;
-  maskUrl: string;
 }
 
 export function VideoMaskSection({
   entry,
   imageUrl,
-  maskUrl,
 }: VideoMaskSectionProps) {
   return (
     <section className="bg-limestone px-6 md:px-[136px] py-6 md:py-[36px] flex items-center justify-center w-full">

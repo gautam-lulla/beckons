@@ -47,8 +47,6 @@ export async function getContentEntry<T>(
   try {
     const contentTypeId = await getContentTypeId(contentTypeSlug);
 
-    console.log("Fetching content:", { contentTypeSlug, entrySlug, contentTypeId, organizationId: ORGANIZATION_ID });
-
     const { data } = await apolloClient.query<ContentEntryResponse>({
       query: GET_CONTENT_ENTRY_BY_SLUG,
       variables: {
@@ -58,8 +56,6 @@ export async function getContentEntry<T>(
       },
       fetchPolicy: "network-only", // Force fresh fetch
     });
-
-    console.log("Content entry data received:", JSON.stringify(data?.contentEntryBySlug?.data).slice(0, 200));
 
     return data?.contentEntryBySlug?.data as T;
   } catch (error) {

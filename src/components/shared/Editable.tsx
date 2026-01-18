@@ -1,4 +1,5 @@
 import React, { ElementType } from "react";
+import Image from "next/image";
 
 interface EditableProps {
   entry: string;
@@ -77,15 +78,15 @@ export function EditableImage({
   height,
 }: EditableImageProps) {
   return (
-    <img
+    <Image
       data-cms-entry={entry}
       data-cms-field={field}
       data-cms-type="image"
       src={src}
       alt={alt}
       className={className}
-      width={width}
-      height={height}
+      width={width || 100}
+      height={height || 100}
     />
   );
 }

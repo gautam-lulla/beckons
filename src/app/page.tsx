@@ -76,10 +76,6 @@ export default async function HomePage() {
 
   const { data } = pageEntry;
 
-  // Debug: log the number of lodges
-  console.log("Number of lodges from CMS:", data.lodgeCarousel?.lodges?.length);
-  console.log("Lodge names:", data.lodgeCarousel?.lodges?.map(l => l.name));
-
   return (
     <main className="min-h-screen">
       <StickyInquireButton
@@ -106,7 +102,6 @@ export default async function HomePage() {
       <VideoMaskSection
         entry="home"
         imageUrl={data.videoMask.imageUrl}
-        maskUrl=""
       />
 
       <AboutSection
