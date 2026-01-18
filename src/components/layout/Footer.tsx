@@ -76,7 +76,7 @@ export function Footer({ content, variant = "dark" }: FooterProps) {
   return (
     <footer className={`${bgColor} px-6 md:px-[136px] py-10 w-full`}>
       {/* Logo Section */}
-      <div className="border-b border-limestone/25 py-8 md:py-12 flex items-center justify-center md:justify-start">
+      <div className="border-b border-limestone/25 py-8 md:py-12 flex items-center justify-center">
         <div className="relative w-[140px] h-[105px] md:w-[184px] md:h-[138px]">
           <Image
             src={content.logoUrl}
