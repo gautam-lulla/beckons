@@ -1,0 +1,105 @@
+:root {
+  /* =============================================
+     PRIMARY COLORS
+     ============================================= */
+  --color-primary-burgundy: #5f0002;
+  --color-primary-charcoal: #1d1d1d;
+  --color-primary-limestone: #fff9ed;
+  --color-primary-limestone-50: rgba(255, 249, 237, 0.5);
+
+  /* =============================================
+     SURFACE COLORS
+     ============================================= */
+  --color-surface-page-bg: #fff9ed;
+  --color-surface-dark: #1d1d1d;
+  --color-surface-stroke-dark-100: #fff9ed;
+  --color-surface-stroke-dark-25: rgba(255, 249, 237, 0.25);
+  --color-surface-icon-light-100: #fff9ed;
+  --color-surface-icon-light-75: rgba(29, 29, 29, 0.75);
+
+  /* =============================================
+     TYPOGRAPHY COLORS
+     ============================================= */
+  --color-text-heading-primary: #5f0002;
+  --color-text-heading-secondary: #fff9ed;
+  --color-text-body-100: #fff9ed;
+  --color-text-body-75: rgba(29, 29, 29, 0.75);
+  --color-text-subheading-100: #fff9ed;
+  --color-text-subheading-50: rgba(255, 249, 237, 0.5);
+
+  /* =============================================
+     BUTTON COLORS
+     ============================================= */
+  --color-button-cta-fill: #5f0002;
+  --color-button-text-dark: #1d1d1d;
+  --color-button-text-light: #fff9ed;
+
+  /* =============================================
+     TYPOGRAPHY - FONT FAMILIES
+     ============================================= */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* =============================================
+     TYPOGRAPHY - FONT SIZES
+     ============================================= */
+  --font-size-h1: 95px;
+  --font-size-h2: 64px;
+  --font-size-h3: 40px;
+  --font-size-h4: 24px;
+  --font-size-h5: 18px;
+  --font-size-body-m: 20px;
+  --font-size-body-xs: 14px;
+  --font-size-subheading-m: 16px;
+  --font-size-subheading-s: 12px;
+  --font-size-button: 14px;
+  --font-size-link: 20px;
+
+  /* =============================================
+     TYPOGRAPHY - FONT WEIGHTS
+     ============================================= */
+  --font-weight-heading: 400;
+  --font-weight-body: 400;
+  --font-weight-subheading-medium: 500;
+  --font-weight-subheading-regular: 400;
+  --font-weight-button: 500;
+  --font-weight-link: 700;
+
+  /* =============================================
+     TYPOGRAPHY - LINE HEIGHTS
+     ============================================= */
+  --line-height-h1: 1.04;
+  --line-height-h2: 1.1;
+  --line-height-h3: 1.1;
+  --line-height-h4: 1;
+  --line-height-h5: 1;
+  --line-height-body: 1.25;
+  --line-height-subheading: 1.1;
+  --line-height-button: 1.1;
+
+  /* =============================================
+     TYPOGRAPHY - LETTER SPACING
+     ============================================= */
+  --letter-spacing-heading: 0;
+  --letter-spacing-body: -0.01em;
+  --letter-spacing-subheading: 0.1em;
+  --letter-spacing-button: 0.1em;
+  --letter-spacing-link: 0.08em;
+
+  /* =============================================
+     SPACING
+     ============================================= */
+  --spacing-0: 0px;
+  --spacing-xxs: 8px;
+  --spacing-4xs: 10px;
+  --spacing-3xs: 12px;
+  --spacing-xs: 16px;
+  --spacing-3m: 32px;
+  --spacing-l: 36px;
+  --spacing-3l: 48px;
+  --spacing-2xl: 72px;
+  --spacing-3xl: 80px;
+  --spacing-xxl: 104px;
+  --spacing-3xxl: 120px;
+  --spacing-4xxl: 136px;
+}

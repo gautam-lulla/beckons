@@ -1,0 +1,106 @@
+{
+  "colors": {
+    "primary": {
+      "burgundy": "#5f0002",
+      "charcoal": "#1d1d1d",
+      "limestone": "#fff9ed",
+      "limestone-50": "rgba(255, 249, 237, 0.5)"
+    },
+    "surface": {
+      "pageBackground": "#fff9ed",
+      "surfaceBackground": "#fff9ed",
+      "dark": "#1d1d1d",
+      "strokeDark100": "#fff9ed",
+      "strokeDark25": "rgba(255, 249, 237, 0.25)",
+      "iconLight100": "#fff9ed",
+      "iconLight75": "rgba(29, 29, 29, 0.75)",
+      "iconDark100": "#fff9ed",
+      "iconDark25": "rgba(29, 29, 29, 0.25)"
+    },
+    "typography": {
+      "headingsPrimary": "#5f0002",
+      "headingsSecondary": "#fff9ed",
+      "body100": "#fff9ed",
+      "body75": "rgba(29, 29, 29, 0.75)",
+      "subheading100": "#fff9ed",
+      "subheading50": "rgba(255, 249, 237, 0.5)"
+    },
+    "buttons": {
+      "ctaFillDefault": "#5f0002",
+      "buttonTextDark": "#1d1d1d",
+      "buttonTextLight": "#fff9ed"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "headings": "'Playfair Display', serif",
+      "headingsOriginal": "Reckless Standard XL",
+      "body": "'Inter', sans-serif",
+      "bodyOriginal": "Helvetica Now Text"
+    },
+    "fontSize": {
+      "h1": "95px",
+      "h2": "64px",
+      "h3": "40px",
+      "h4": "24px",
+      "h5": "18px",
+      "bodyM": "20px",
+      "bodyXs": "14px",
+      "subheadingM": "16px",
+      "subheadingS": "12px",
+      "button": "14px",
+      "link": "20px"
+    },
+    "fontWeight": {
+      "headings": 400,
+      "body": 400,
+      "subheadingsMedium": 500,
+      "subheadingsRegular": 400,
+      "button": 500,
+      "link": 700
+    },
+    "lineHeight": {
+      "h1": 1.04,
+      "h2": 1.1,
+      "h3": 1.1,
+      "h4": 1,
+      "h5": 1,
+      "bodyM": 1.25,
+      "bodyXs": 1.25,
+      "subheadingM": 1.1,
+      "button": 1.1
+    },
+    "letterSpacing": {
+      "headings": "0",
+      "body": "-0.01em",
+      "subheadings": "0.1em",
+      "button": "0.1em",
+      "link": "0.08em"
+    }
+  },
+  "spacing": {
+    "4xxs": "0px",
+    "xxs": "8px",
+    "4xs": "10px",
+    "3xs": "12px",
+    "xs": "16px",
+    "3m": "32px",
+    "l": "36px",
+    "3l": "48px",
+    "2xl": "72px",
+    "3xl": "80px",
+    "xxl": "104px",
+    "3xxl": "120px",
+    "4xxl": "136px"
+  },
+  "padding": {
+    "space00": "0px",
+    "space01": "8px",
+    "space02": "12px",
+    "space04": "24px",
+    "space06": "48px"
+  },
+  "borderRadius": {
+    "radius01": "0px"
+  }
+}

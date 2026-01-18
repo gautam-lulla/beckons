@@ -1,26 +1,206 @@
 @import "tailwindcss";
+@import "../styles/tokens.css";
+
+/* Google Fonts - Playfair Display and Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-surface-page-bg);
+  --foreground: var(--color-primary-charcoal);
 }
 
 @theme inline {
+  /* Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-burgundy: var(--color-primary-burgundy);
+  --color-charcoal: var(--color-primary-charcoal);
+  --color-limestone: var(--color-primary-limestone);
+  --color-limestone-50: var(--color-primary-limestone-50);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Typography Colors */
+  --color-heading-primary: var(--color-text-heading-primary);
+  --color-heading-secondary: var(--color-text-heading-secondary);
+  --color-body-100: var(--color-text-body-100);
+  --color-body-75: var(--color-text-body-75);
+  --color-subheading-100: var(--color-text-subheading-100);
+  --color-subheading-50: var(--color-text-subheading-50);
+
+  /* Button Colors */
+  --color-cta-fill: var(--color-button-cta-fill);
+  --color-button-dark: var(--color-button-text-dark);
+  --color-button-light: var(--color-button-text-light);
+
+  /* Font Families */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Font Sizes */
+  --text-h1: var(--font-size-h1);
+  --text-h2: var(--font-size-h2);
+  --text-h3: var(--font-size-h3);
+  --text-h4: var(--font-size-h4);
+  --text-h5: var(--font-size-h5);
+  --text-body-m: var(--font-size-body-m);
+  --text-body-xs: var(--font-size-body-xs);
+  --text-subheading-m: var(--font-size-subheading-m);
+  --text-subheading-s: var(--font-size-subheading-s);
+  --text-button: var(--font-size-button);
+  --text-link: var(--font-size-link);
+
+  /* Spacing */
+  --spacing-xxs: 8px;
+  --spacing-xs: 16px;
+  --spacing-sm: 24px;
+  --spacing-md: 32px;
+  --spacing-lg: 48px;
+  --spacing-xl: 72px;
+  --spacing-2xl: 104px;
+  --spacing-3xl: 136px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography utility classes */
+.heading-h1 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-h1);
+  letter-spacing: var(--letter-spacing-heading);
+  color: var(--color-text-heading-primary);
+}
+
+.heading-h2 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-h2);
+  letter-spacing: var(--letter-spacing-heading);
+  color: var(--color-text-heading-primary);
+}
+
+.heading-h3 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-h3);
+  letter-spacing: var(--letter-spacing-heading);
+}
+
+.heading-h4 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-h4);
+  letter-spacing: var(--letter-spacing-heading);
+}
+
+.heading-h5 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h5);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-h5);
+  letter-spacing: var(--letter-spacing-heading);
+}
+
+.body-m {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body-m);
+  font-weight: var(--font-weight-body);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-body);
+}
+
+.body-xs {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body-xs);
+  font-weight: var(--font-weight-body);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-body);
+}
+
+.subheading-m {
+  font-family: var(--font-body);
+  font-size: var(--font-size-subheading-m);
+  font-weight: var(--font-weight-subheading-medium);
+  line-height: var(--line-height-subheading);
+  letter-spacing: var(--letter-spacing-subheading);
+  text-transform: uppercase;
+}
+
+.subheading-s {
+  font-family: var(--font-body);
+  font-size: var(--font-size-subheading-s);
+  font-weight: var(--font-weight-subheading-medium);
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-subheading);
+  text-transform: uppercase;
+}
+
+.button-text {
+  font-family: var(--font-body);
+  font-size: var(--font-size-button);
+  font-weight: var(--font-weight-button);
+  line-height: var(--line-height-button);
+  letter-spacing: var(--letter-spacing-button);
+  text-transform: uppercase;
+}
+
+.link-text {
+  font-family: var(--font-body);
+  font-size: var(--font-size-link);
+  font-weight: var(--font-weight-link);
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-link);
+  text-transform: uppercase;
+  color: var(--color-button-cta-fill);
+}
+
+/* Color utility classes */
+.bg-limestone {
+  background-color: var(--color-primary-limestone);
+}
+
+.bg-charcoal {
+  background-color: var(--color-primary-charcoal);
+}
+
+.bg-burgundy {
+  background-color: var(--color-primary-burgundy);
+}
+
+.text-burgundy {
+  color: var(--color-primary-burgundy);
+}
+
+.text-limestone {
+  color: var(--color-primary-limestone);
+}
+
+.text-charcoal {
+  color: var(--color-primary-charcoal);
+}
+
+.text-body-75 {
+  color: var(--color-text-body-75);
+}
+
+.text-limestone-50 {
+  color: var(--color-primary-limestone-50);
+}
+
+/* Border utility classes */
+.border-limestone {
+  border-color: var(--color-primary-limestone);
+}
+
+.border-limestone-25 {
+  border-color: var(--color-surface-stroke-dark-25);
 }
