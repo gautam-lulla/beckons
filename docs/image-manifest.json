@@ -1,0 +1,131 @@
+{
+  "images": [
+    {
+      "name": "hero-video-poster",
+      "figmaNodeId": "10661:1836",
+      "figmaUrl": "https://www.figma.com/api/mcp/asset/ad81622f-70fb-48b8-a918-445ee9f7a631",
+      "description": "Seaplane on water - hero background",
+      "usedOn": ["home"],
+      "status": "figma-temp"
+    },
+    {
+      "name": "about-card-image-1",
+      "figmaNodeId": "10661:2775",
+      "figmaUrl": "https://www.figma.com/api/mcp/asset/ad81622f-70fb-48b8-a918-445ee9f7a631",
+      "description": "Why Beckons card - Places Worth Reaching",
+      "usedOn": ["home"],
+      "status": "figma-temp"
+    },
+    {
+      "name": "about-card-image-2",
+      "figmaNodeId": "10661:2781",
+      "figmaUrl": "https://www.figma.com/api/mcp/asset/f32c0a8f-394f-4311-98dc-ca2daf49e7f9",
+      "description": "Why Beckons card - Built for where we are",
+      "usedOn": ["home"],
+      "status": "figma-temp"
+    },
+    {
+      "name": "about-card-image-3",
+      "figmaNodeId": "10661:2787",
+      "figmaUrl": "https://www.figma.com/api/mcp/asset/9c9262a2-aaa8-4eb3-a591-1879356abf41",
+      "description": "Why Beckons card - Intentionally local",
+      "usedOn": ["home"],
+      "status": "figma-temp"
+    },
+    {
+      "name": "lodge-carousel-bg",
+      "figmaNodeId": "10650:1217",
+      "figmaUrl": "https://www.figma.com/api/mcp/asset/bc7e60aa-3f00-49cd-ac95-f605eb63c38b",
+      "description": "Southern Ocean Lodge - carousel background",
+      "usedOn": ["home"],
+      "status": "figma-temp"
+    },
+    {
+      "name": "logo-full",
+      "figmaNodeId": "10661:1839",
+      "figmaUrl": "https://www.figma.com/api/mcp/asset/40aeaa38-fe51-40fa-b951-f8095866aaeb",
+      "description": "Beckons logo with compass icon",
+      "usedOn": ["home", "footer", "all-pages"],
+      "status": "figma-temp"
+    },
+    {
+      "name": "logo-icon",
+      "figmaNodeId": "10650:572",
+      "figmaUrl": "https://www.figma.com/api/mcp/asset/3fcb0fa0-6860-4ad4-b575-c84e61366818",
+      "description": "Beckons compass logo (footer)",
+      "usedOn": ["footer"],
+      "status": "figma-temp"
+    },
+    {
+      "name": "thank-you-bg",
+      "figmaNodeId": "10488:865",
+      "description": "Uluru background for thank you page",
+      "usedOn": ["thank-you"],
+      "status": "needs-export"
+    },
+    {
+      "name": "video-mask-shape",
+      "figmaNodeId": "10661:2731",
+      "figmaUrl": "https://www.figma.com/api/mcp/asset/094b5e5e-fd42-4b86-b872-a2b14c5fd421",
+      "description": "Diamond/flower shaped video mask",
+      "usedOn": ["home", "email-subscription", "inquire"],
+      "status": "figma-temp"
+    }
+  ],
+  "icons": [
+    {
+      "name": "chevron-down",
+      "description": "Carousel navigation chevron",
+      "usedOn": ["home"]
+    },
+    {
+      "name": "arrow-right",
+      "description": "Link arrow indicator",
+      "usedOn": ["home"]
+    },
+    {
+      "name": "volume-off",
+      "description": "Video mute button icon",
+      "usedOn": ["home"]
+    },
+    {
+      "name": "lodge-icon",
+      "description": "Lodge compass/star icon",
+      "usedOn": ["home"]
+    },
+    {
+      "name": "diamond-outline-1",
+      "figmaUrl": "https://www.figma.com/api/mcp/asset/61147499-708f-47c8-bfaf-10607b60feac",
+      "description": "Diamond shape outline for cards",
+      "usedOn": ["home"]
+    },
+    {
+      "name": "diamond-outline-2",
+      "figmaUrl": "https://www.figma.com/api/mcp/asset/2266cb25-1011-4bdc-a919-19a97341accc",
+      "description": "Diamond shape rotated",
+      "usedOn": ["home"]
+    },
+    {
+      "name": "diamond-outline-3",
+      "figmaUrl": "https://www.figma.com/api/mcp/asset/5cc8d81c-d1e0-44dc-b3df-963e725b19fe",
+      "description": "Diamond shape variant",
+      "usedOn": ["home"]
+    }
+  ],
+  "gradients": [
+    {
+      "name": "hero-top-gradient",
+      "figmaUrl": "https://www.figma.com/api/mcp/asset/a4c10670-fa82-4317-8ae4-f7d34e3a189a",
+      "description": "Hero section top fade gradient",
+      "usedOn": ["home"]
+    },
+    {
+      "name": "carousel-gradient",
+      "figmaUrl": "https://www.figma.com/api/mcp/asset/f1591a5c-5958-4e75-9ce0-710d7784d45a",
+      "description": "Lodge carousel text overlay gradient",
+      "usedOn": ["home"]
+    }
+  ],
+  "totalAssets": 18,
+  "note": "Figma URLs are temporary (7 days). Upload to CMS media library before expiration."
+}
