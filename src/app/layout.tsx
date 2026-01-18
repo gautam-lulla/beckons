@@ -28,6 +28,11 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="antialiased">
         <div className="max-w-[1920px] mx-auto relative">{children}</div>
+        <script
+          src="https://cms.sphereos.dev/editor.js"
+          data-cms-url="https://cms.sphereos.dev"
+          defer
+        />
       </body>
     </html>
   );
