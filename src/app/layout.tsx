@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import { Suspense } from "react";
+import { InlineEditorScript } from "@/components/cms/InlineEditorScript";
 import "./globals.css";
 
 const inter = Inter({
@@ -28,12 +30,9 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="antialiased">
         <div className="max-w-[1920px] mx-auto relative">{children}</div>
-        <script
-          src="https://backend-production-162b.up.railway.app/inline-editor.js"
-          data-cms-org="beckons"
-          data-cms-api="https://backend-production-162b.up.railway.app"
-          defer
-        />
+        <Suspense fallback={null}>
+          <InlineEditorScript />
+        </Suspense>
       </body>
     </html>
   );
