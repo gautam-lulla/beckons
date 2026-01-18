@@ -1,31 +1,55 @@
-"use client";
+'use client';
 
-import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 
-export function InlineEditorScript() {
+interface InlineEditorLoaderProps {
+  orgSlug: string;
+  apiBase?: string;
+  adminBase?: string;
+}
+
+/**
+ * Loads the CMS inline editor script when ?edit=true is present in the URL.
+ * This component has zero impact on normal visitors - the script only loads
+ * when edit mode is explicitly requested.
+ */
+export function InlineEditorScript({
+  orgSlug,
+  apiBase = 'https://backend-production-162b.up.railway.app',
+  adminBase = 'https://admin-gules-psi-18.vercel.app',
+}: InlineEditorLoaderProps) {
   const searchParams = useSearchParams();
-  const isEditMode = searchParams.get("edit") === "true";
+  const isEditMode = searchParams.get('edit') === 'true';
 
   useEffect(() => {
     if (!isEditMode) return;
 
     // Check if script is already loaded
-    if (document.querySelector('script[data-cms-editor]')) return;
+    if (document.querySelector('script[data-cms-editor]')) {
+      return;
+    }
 
-    const script = document.createElement("script");
-    script.src = "https://backend-production-162b.up.railway.app/inline-editor.js";
-    script.dataset.cmsOrg = "beckons";
-    script.dataset.cmsApi = "https://backend-production-162b.up.railway.app";
-    script.dataset.cmsAdmin = "https://sphereos-admin.vercel.app";
-    script.dataset.cmsEditor = "true"; // marker to prevent duplicate loading
+    // Dynamically inject the editor script
+    const script = document.createElement('script');
+    // Add cache-busting parameter for development
+    const cacheBuster = process.env.NODE_ENV === 'development' ? `?v=${Date.now()}` : '';
+    script.src = `${apiBase}/inline-editor.js${cacheBuster}`;
+    script.dataset.cmsOrg = orgSlug;
+    script.dataset.cmsApi = apiBase;
+    if (adminBase) {
+      script.dataset.cmsAdmin = adminBase;
+    }
+    script.dataset.cmsEditor = 'true';
     script.defer = true;
-    document.body.appendChild(script);
+    document.head.appendChild(script);
 
     return () => {
-      // Cleanup on unmount if needed
+      script.remove();
     };
-  }, [isEditMode]);
+  }, [isEditMode, orgSlug, apiBase, adminBase]);
 
   return null;
 }
+
+export default InlineEditorScript;
