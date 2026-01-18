@@ -1,10 +1,10 @@
-import React from "react";
+import React, { ElementType } from "react";
 
 interface EditableProps {
   entry: string;
   field: string;
   type?: "text" | "richtext" | "image" | "array";
-  as?: keyof JSX.IntrinsicElements;
+  as?: ElementType;
   className?: string;
   children: React.ReactNode;
 }

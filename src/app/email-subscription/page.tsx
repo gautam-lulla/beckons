@@ -11,6 +11,7 @@ interface EmailSubscriptionPageData {
   titleItalicPart?: string;
   subtitle: string;
   videoMaskImageUrl: string;
+  titleLabel?: string;
   titleOptions: string[];
   firstNameLabel: string;
   lastNameLabel: string;
@@ -52,7 +53,7 @@ export default async function EmailSubscriptionPage() {
 
   return (
     <main className="min-h-screen bg-limestone">
-      <StickyInquireButton entry={entry} buttonText="INQUIRE NOW" href="/inquire" />
+      <StickyInquireButton entry={entry} buttonText="BACK TO HOME" href="/" variant="secondary" />
 
       <FormPageHeader
         entry={entry}
@@ -68,19 +69,24 @@ export default async function EmailSubscriptionPage() {
           <legend
             className="body-xs text-charcoal mb-4"
             data-cms-entry={entry}
-            data-cms-field="titleOptions"
+            data-cms-field="titleLabel"
           >
-            Title*
+            {data.titleLabel || "Title*"}
           </legend>
-          <div className="flex flex-wrap gap-4">
+          <div className="grid grid-cols-2 gap-x-8 gap-y-3 max-w-[200px]">
             {data.titleOptions.map((option, index) => (
-              <label key={option} className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  name="title"
-                  value={option}
-                  className="w-4 h-4 border border-charcoal/25"
-                />
+              <label key={option} className="flex items-center gap-2 cursor-pointer group">
+                <div className="relative w-5 h-5 shrink-0">
+                  <input
+                    type="radio"
+                    name="title"
+                    value={option}
+                    required
+                    className="peer absolute inset-0 opacity-0 cursor-pointer"
+                  />
+                  <div className="w-5 h-5 border border-charcoal" />
+                  <div className="absolute top-1 left-1 w-3 h-3 bg-charcoal opacity-0 peer-checked:opacity-100" />
+                </div>
                 <span
                   className="body-xs text-charcoal"
                   data-cms-entry={entry}
@@ -94,7 +100,7 @@ export default async function EmailSubscriptionPage() {
         </fieldset>
 
         {/* Name Fields */}
-        <div className="grid grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
             <label
               className="body-xs text-charcoal block mb-2"
@@ -106,7 +112,7 @@ export default async function EmailSubscriptionPage() {
             <input
               type="text"
               required
-              className="w-full border-b border-charcoal/25 bg-transparent py-2 focus:outline-none focus:border-burgundy"
+              className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy"
             />
           </div>
           <div>
@@ -120,13 +126,13 @@ export default async function EmailSubscriptionPage() {
             <input
               type="text"
               required
-              className="w-full border-b border-charcoal/25 bg-transparent py-2 focus:outline-none focus:border-burgundy"
+              className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy"
             />
           </div>
         </div>
 
         {/* Contact & Country */}
-        <div className="grid grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
             <label
               className="body-xs text-charcoal block mb-2"
@@ -138,7 +144,7 @@ export default async function EmailSubscriptionPage() {
             <input
               type="email"
               required
-              className="w-full border-b border-charcoal/25 bg-transparent py-2 focus:outline-none focus:border-burgundy"
+              className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy"
             />
           </div>
           <div>
@@ -151,7 +157,7 @@ export default async function EmailSubscriptionPage() {
             </label>
             <select
               required
-              className="w-full border-b border-charcoal/25 bg-transparent py-2 focus:outline-none focus:border-burgundy"
+              className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy"
             >
               <option value="">{data.countryRegionPlaceholder}</option>
             </select>
@@ -167,7 +173,7 @@ export default async function EmailSubscriptionPage() {
           >
             {data.preferredLanguageLabel}
           </label>
-          <select className="w-full border-b border-charcoal/25 bg-transparent py-2 focus:outline-none focus:border-burgundy">
+          <select className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy">
             <option value="">{data.preferredLanguagePlaceholder}</option>
           </select>
         </div>
@@ -181,15 +187,19 @@ export default async function EmailSubscriptionPage() {
           >
             {data.interestsLabel}
           </legend>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {data.interests.map((interest, index) => (
-              <label key={interest.value} className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  name="interests"
-                  value={interest.value}
-                  className="w-4 h-4 border border-charcoal/25"
-                />
+              <label key={interest.value} className="flex items-center gap-2 cursor-pointer">
+                <div className="relative w-5 h-5 shrink-0">
+                  <input
+                    type="checkbox"
+                    name="interests"
+                    value={interest.value}
+                    className="peer absolute inset-0 opacity-0 cursor-pointer"
+                  />
+                  <div className="w-5 h-5 border border-charcoal" />
+                  <div className="absolute top-1 left-1 w-3 h-3 bg-charcoal opacity-0 peer-checked:opacity-100" />
+                </div>
                 <span
                   className="body-xs text-charcoal"
                   data-cms-entry={entry}
@@ -213,18 +223,22 @@ export default async function EmailSubscriptionPage() {
           </label>
           <select
             required
-            className="w-full border-b border-charcoal/25 bg-transparent py-2 focus:outline-none focus:border-burgundy"
+            className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy"
           >
             <option value="">{data.typeOfEnquiryPlaceholder}</option>
           </select>
         </div>
 
         {/* Subscribe Checkbox */}
-        <label className="flex items-start gap-3 mb-6">
-          <input
-            type="checkbox"
-            className="w-4 h-4 border border-charcoal/25 mt-1"
-          />
+        <label className="flex items-center gap-3 mb-6 cursor-pointer">
+          <div className="relative w-5 h-5 shrink-0">
+            <input
+              type="checkbox"
+              className="peer absolute inset-0 opacity-0 cursor-pointer"
+            />
+            <div className="w-5 h-5 border border-charcoal" />
+            <div className="absolute top-1 left-1 w-3 h-3 bg-charcoal opacity-0 peer-checked:opacity-100" />
+          </div>
           <span
             className="body-xs text-charcoal"
             data-cms-entry={entry}
@@ -262,7 +276,7 @@ export default async function EmailSubscriptionPage() {
         </div>
       </form>
 
-      {footerContent && <Footer content={footerContent} />}
+      {footerContent && <Footer content={footerContent} variant="burgundy" />}
     </main>
   );
 }

@@ -47,7 +47,7 @@ export default async function InquirePage() {
 
   return (
     <main className="min-h-screen bg-limestone">
-      <StickyInquireButton entry={entry} buttonText="INQUIRE NOW" href="/inquire" />
+      <StickyInquireButton entry={entry} buttonText="BACK TO HOME" href="/" variant="secondary" />
 
       <FormPageHeader
         entry={entry}
@@ -59,7 +59,7 @@ export default async function InquirePage() {
 
       <form className="max-w-[600px] mx-auto px-6 py-16">
         {/* Name Fields */}
-        <div className="grid grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
             <label
               className="body-xs text-charcoal block mb-2"
@@ -71,7 +71,7 @@ export default async function InquirePage() {
             <input
               type="text"
               required
-              className="w-full border-b border-charcoal/25 bg-transparent py-2 focus:outline-none focus:border-burgundy"
+              className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy"
             />
           </div>
           <div>
@@ -85,13 +85,13 @@ export default async function InquirePage() {
             <input
               type="text"
               required
-              className="w-full border-b border-charcoal/25 bg-transparent py-2 focus:outline-none focus:border-burgundy"
+              className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy"
             />
           </div>
         </div>
 
         {/* Contact Fields */}
-        <div className="grid grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
             <label
               className="body-xs text-charcoal block mb-2"
@@ -103,7 +103,7 @@ export default async function InquirePage() {
             <input
               type="email"
               required
-              className="w-full border-b border-charcoal/25 bg-transparent py-2 focus:outline-none focus:border-burgundy"
+              className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy"
             />
           </div>
           <div>
@@ -117,13 +117,13 @@ export default async function InquirePage() {
             <input
               type="tel"
               required
-              className="w-full border-b border-charcoal/25 bg-transparent py-2 focus:outline-none focus:border-burgundy"
+              className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy"
             />
           </div>
         </div>
 
         {/* Country/Region */}
-        <div className="grid grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
             <label
               className="body-xs text-charcoal block mb-2"
@@ -134,7 +134,7 @@ export default async function InquirePage() {
             </label>
             <select
               required
-              className="w-full border-b border-charcoal/25 bg-transparent py-2 focus:outline-none focus:border-burgundy"
+              className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy"
             >
               <option value="">{data.countryRegionPlaceholder}</option>
             </select>
@@ -149,7 +149,7 @@ export default async function InquirePage() {
             </label>
             <select
               required
-              className="w-full border-b border-charcoal/25 bg-transparent py-2 focus:outline-none focus:border-burgundy"
+              className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy"
             >
               <option value="">{data.countryRegionPlaceholder}</option>
             </select>
@@ -168,16 +168,20 @@ export default async function InquirePage() {
           <textarea
             required
             rows={4}
-            className="w-full border-b border-charcoal/25 bg-transparent py-2 focus:outline-none focus:border-burgundy resize-none"
+            className="w-full border border-charcoal/25 bg-transparent px-3 py-3 focus:outline-none focus:border-burgundy resize-none"
           />
         </div>
 
         {/* Subscribe Checkbox */}
-        <label className="flex items-start gap-3 mb-6">
-          <input
-            type="checkbox"
-            className="w-4 h-4 border border-charcoal/25 mt-1"
-          />
+        <label className="flex items-center gap-3 mb-6 cursor-pointer">
+          <div className="relative w-5 h-5 shrink-0">
+            <input
+              type="checkbox"
+              className="peer absolute inset-0 opacity-0 cursor-pointer"
+            />
+            <div className="w-5 h-5 border border-charcoal" />
+            <div className="absolute top-1 left-1 w-3 h-3 bg-charcoal opacity-0 peer-checked:opacity-100" />
+          </div>
           <span
             className="body-xs text-charcoal"
             data-cms-entry={entry}
@@ -215,7 +219,7 @@ export default async function InquirePage() {
         </div>
       </form>
 
-      {footerContent && <Footer content={footerContent} />}
+      {footerContent && <Footer content={footerContent} variant="burgundy" />}
     </main>
   );
 }

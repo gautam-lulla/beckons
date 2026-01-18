@@ -35,7 +35,7 @@ export function AboutSection({
   };
 
   return (
-    <section className="bg-limestone py-[136px] px-[136px] flex flex-col items-center gap-12">
+    <section className="bg-limestone py-16 md:py-[136px] px-6 md:px-[136px] flex flex-col items-center gap-8 md:gap-12">
       <div className="flex flex-col items-center gap-[72px] text-center">
         <h2
           className="heading-h2"

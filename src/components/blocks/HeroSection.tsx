@@ -54,13 +54,14 @@ export function HeroSection({
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="relative w-[300px] h-[225px]">
           <Image
-            src={logoUrl}
-            alt={logoAlt}
+            src={logoUrl || "/images/logo.svg"}
+            alt={logoAlt || "Beckons"}
             fill
             className="object-contain"
             data-cms-entry={entry}
             data-cms-field="hero.logoUrl"
             data-cms-type="image"
+            unoptimized={logoUrl?.endsWith('.svg')}
           />
         </div>
       </div>

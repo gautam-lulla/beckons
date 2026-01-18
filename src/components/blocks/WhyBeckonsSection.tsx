@@ -2,7 +2,10 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { DiamondShape, ChevronLeft, ChevronRight } from "../ui/icons";
+import { ChevronLeft, ChevronRight } from "../ui/icons";
+
+// Diamond overlay SVG from Figma
+const DIAMOND_SVG_URL = "https://www.figma.com/api/mcp/asset/4da2e381-e519-413f-af88-25f0733663c7";
 import type { WhyBeckonsCard } from "@/types/content";
 
 interface WhyBeckonsSectionProps {
@@ -29,7 +32,7 @@ export function WhyBeckonsSection({
   };
 
   return (
-    <section className="bg-limestone py-[136px] px-[136px] flex flex-col gap-[104px]">
+    <section className="bg-limestone py-16 md:py-[136px] px-6 md:px-[136px] flex flex-col gap-12 md:gap-[104px]">
       {/* Header */}
       <div className="flex flex-col items-center gap-12 text-center">
         <h2
@@ -49,9 +52,9 @@ export function WhyBeckonsSection({
       </div>
 
       {/* Cards Carousel */}
-      <div className="flex flex-col gap-20">
+      <div className="flex flex-col gap-12 md:gap-20">
         <div
-          className="flex gap-4 overflow-hidden"
+          className="flex flex-col md:flex-row gap-12 md:gap-4 overflow-hidden justify-center items-center"
           data-cms-entry={entry}
           data-cms-field="whyBeckons.cards"
           data-cms-type="array"
@@ -59,14 +62,14 @@ export function WhyBeckonsSection({
           {cards.map((card, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-[378px] flex flex-col items-center gap-12 px-6"
+              className="flex-shrink-0 w-full md:w-[378px] flex flex-col items-center gap-8 md:gap-12 px-6"
               style={{
                 transform: `translateX(-${scrollPosition * 394}px)`,
                 transition: "transform 0.3s ease",
               }}
             >
               {/* Card Image with Diamond Overlay */}
-              <div className="relative w-[330px] h-[407px] overflow-hidden flex items-center justify-center">
+              <div className="relative w-full max-w-[330px] h-[407px] overflow-hidden flex items-center justify-center">
                 <Image
                   src={card.imageUrl}
                   alt=""
@@ -77,8 +80,13 @@ export function WhyBeckonsSection({
                   data-cms-type="image"
                 />
                 {/* Diamond Overlay */}
-                <div className="relative z-10">
-                  <DiamondShape className="w-[104px] h-[104px]" color="#fff9ed" />
+                <div className="relative z-10 w-[140px] h-[140px]">
+                  <Image
+                    src={DIAMOND_SVG_URL}
+                    alt=""
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               </div>
 

@@ -26,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <div className="max-w-[1920px] mx-auto relative">{children}</div>
+      </body>
     </html>
   );
 }

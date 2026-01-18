@@ -12,6 +12,7 @@ export interface CountryLodges {
 
 export interface FooterContent {
   logoUrl: string;
+  logoAlt?: string;
   newsletterTitle: string;
   newsletterDescription: string;
   newsletterButtonText: string;

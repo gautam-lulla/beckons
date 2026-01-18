@@ -15,7 +15,7 @@ export function ThankYouHero({
   backgroundImageUrl,
 }: ThankYouHeroProps) {
   return (
-    <section className="relative h-[500px] w-full overflow-hidden flex items-center justify-center">
+    <section className="relative h-[70vh] md:h-[500px] w-full overflow-hidden flex items-center justify-center">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image

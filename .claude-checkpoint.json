@@ -1,10 +1,20 @@
 {
-  "phase": 5,
-  "timestamp": "2026-01-18T14:55:37.752Z",
+  "phase": 14,
+  "status": "complete",
+  "timestamp": "2026-01-18T15:08:00.000Z",
   "contentTypes": {
     "site-settings": "81e25ab9-e6ff-477e-a816-6ad221aa4252",
     "site-footer": "7de79163-3660-4f0d-9750-950c846b7913",
     "page-content": "07c14638-aced-4140-aa25-b7658ed17639"
   },
-  "organizationId": "d146dc11-c3ff-4476-b725-1510f245b0ed"
+  "entries": {
+    "global-settings": "8eaa4f02-09f8-4d16-b7ad-6c415862676b",
+    "global-footer": "ca7ca0c4-558d-4c7d-9552-b5c7d758393d",
+    "home": "fc98474f-a71d-4599-a296-d64726e8673e",
+    "email-subscription": "e78296e8-edd9-4318-8787-49cc0e9421a3",
+    "inquire": "ba5795a1-0baf-4a49-8efa-0eab67c39db5",
+    "thank-you": "66bc65ce-369f-4ef9-8843-9aa298372208"
+  },
+  "organizationId": "d146dc11-c3ff-4476-b725-1510f245b0ed",
+  "figmaFile": "yzVylkS9taabPKg5C8O7q7"
 }

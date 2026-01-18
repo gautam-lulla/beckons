@@ -15,9 +15,9 @@ export function IntroSection({
   ctaUrl,
 }: IntroSectionProps) {
   return (
-    <section className="bg-limestone py-[136px] px-[136px] flex flex-col items-center gap-16">
+    <section className="bg-limestone py-16 md:py-[136px] px-6 md:px-[136px] flex flex-col items-center gap-8 md:gap-16">
       <h1
-        className="heading-h1 text-center max-w-[900px]"
+        className="font-heading text-[32px] md:text-[56px] leading-[1.1] text-heading-primary text-center max-w-[600px] md:max-w-[700px]"
         data-cms-entry={entry}
         data-cms-field="intro.headline"
       >

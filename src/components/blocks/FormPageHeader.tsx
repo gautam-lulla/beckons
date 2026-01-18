@@ -32,9 +32,9 @@ export function FormPageHeader({
   };
 
   return (
-    <div className="bg-limestone pt-20 px-[136px] flex flex-col items-center gap-16">
+    <div className="bg-limestone pt-16 md:pt-20 px-6 md:px-[136px] flex flex-col items-center gap-8 md:gap-16">
       {/* Diamond Video Mask */}
-      <div className="relative w-[300px] h-[300px]">
+      <div className="relative w-[200px] h-[200px] md:w-[300px] md:h-[300px]">
         <div
           className="absolute inset-0 overflow-hidden"
           style={{

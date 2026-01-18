@@ -3,6 +3,19 @@ import { GET_CONTENT_ENTRY_BY_SLUG, GET_CONTENT_TYPE_BY_SLUG } from "../queries"
 
 const ORGANIZATION_ID = process.env.CMS_ORGANIZATION_ID;
 
+// GraphQL response types
+interface ContentTypeResponse {
+  contentTypeBySlug: {
+    id: string;
+  } | null;
+}
+
+interface ContentEntryResponse {
+  contentEntryBySlug: {
+    data: unknown;
+  } | null;
+}
+
 // Cache for content type IDs
 const contentTypeIdCache: Record<string, string> = {};
 
@@ -11,7 +24,7 @@ async function getContentTypeId(slug: string): Promise<string> {
     return contentTypeIdCache[slug];
   }
 
-  const { data } = await apolloClient.query({
+  const { data } = await apolloClient.query<ContentTypeResponse>({
     query: GET_CONTENT_TYPE_BY_SLUG,
     variables: {
       slug,
@@ -34,14 +47,19 @@ export async function getContentEntry<T>(
   try {
     const contentTypeId = await getContentTypeId(contentTypeSlug);
 
-    const { data } = await apolloClient.query({
+    console.log("Fetching content:", { contentTypeSlug, entrySlug, contentTypeId, organizationId: ORGANIZATION_ID });
+
+    const { data } = await apolloClient.query<ContentEntryResponse>({
       query: GET_CONTENT_ENTRY_BY_SLUG,
       variables: {
         slug: entrySlug,
         contentTypeId,
         organizationId: ORGANIZATION_ID,
       },
+      fetchPolicy: "network-only", // Force fresh fetch
     });
+
+    console.log("Content entry data received:", JSON.stringify(data?.contentEntryBySlug?.data).slice(0, 200));
 
     return data?.contentEntryBySlug?.data as T;
   } catch (error) {
@@ -64,5 +82,5 @@ export async function getNavigation<T>(): Promise<T | null> {
 }
 
 export async function getFooterContent<T>(): Promise<T | null> {
-  return getContentEntry<T>("footer", "global-footer");
+  return getContentEntry<T>("site-footer", "global-footer");
 }

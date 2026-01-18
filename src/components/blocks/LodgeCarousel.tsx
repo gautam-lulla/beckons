@@ -15,6 +15,11 @@ export function LodgeCarousel({ entry, title, lodges }: LodgeCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentLodge = lodges[currentIndex];
 
+  // Debug: log carousel state
+  console.log("LodgeCarousel - Total lodges:", lodges.length);
+  console.log("LodgeCarousel - Current index:", currentIndex);
+  console.log("LodgeCarousel - Current lodge:", currentLodge?.name, currentLodge?.imageUrl);
+
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? lodges.length - 1 : prev - 1));
   };
@@ -26,10 +31,11 @@ export function LodgeCarousel({ entry, title, lodges }: LodgeCarouselProps) {
   if (!currentLodge) return null;
 
   return (
-    <section className="relative h-[800px] w-full overflow-hidden">
+    <section className="relative h-[600px] md:h-[800px] w-full overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
+          key={`lodge-image-${currentIndex}`}
           src={currentLodge.imageUrl}
           alt={currentLodge.name}
           fill
@@ -37,6 +43,7 @@ export function LodgeCarousel({ entry, title, lodges }: LodgeCarouselProps) {
           data-cms-entry={entry}
           data-cms-field={`lodgeCarousel.lodges[${currentIndex}].imageUrl`}
           data-cms-type="image"
+          priority
         />
         {/* Bottom gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
@@ -53,17 +60,17 @@ export function LodgeCarousel({ entry, title, lodges }: LodgeCarouselProps) {
         </h2>
       </div>
 
-      {/* Navigation Controls */}
+      {/* Navigation Controls - positioned at edges */}
       <button
         onClick={goToPrevious}
-        className="absolute left-2 top-1/2 -translate-y-1/2 bg-charcoal/75 p-2"
+        className="absolute left-0 top-1/2 -translate-y-1/2 bg-charcoal/75 p-2"
         aria-label="Previous lodge"
       >
         <ChevronLeft className="w-6 h-6" color="#fff9ed" />
       </button>
       <button
         onClick={goToNext}
-        className="absolute right-2 top-1/2 -translate-y-1/2 bg-charcoal/75 p-2"
+        className="absolute right-0 top-1/2 -translate-y-1/2 bg-charcoal/75 p-2"
         aria-label="Next lodge"
       >
         <ChevronRight className="w-6 h-6" color="#fff9ed" />

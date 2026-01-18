@@ -33,7 +33,7 @@ export default async function ThankYouPage() {
 
   return (
     <main className="min-h-screen">
-      <StickyInquireButton entry={entry} buttonText="INQUIRE NOW" href="/inquire" />
+      <StickyInquireButton entry={entry} buttonText="BACK TO HOME" href="/" variant="secondary" />
 
       <ThankYouHero
         entry={entry}
@@ -42,7 +42,7 @@ export default async function ThankYouPage() {
         backgroundImageUrl={data.backgroundImageUrl}
       />
 
-      {footerContent && <Footer content={footerContent} />}
+      {footerContent && <Footer content={footerContent} variant="burgundy" />}
     </main>
   );
 }

@@ -4,7 +4,7 @@ interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   href?: string;
-  variant?: "primary" | "secondary" | "outline";
+  variant?: "primary" | "secondary" | "outline" | "outlineDark";
   className?: string;
   type?: "button" | "submit";
   "data-cms-entry"?: string;
@@ -26,6 +26,7 @@ export function Button({
     primary: "bg-limestone text-charcoal border border-limestone hover:bg-limestone/90",
     secondary: "bg-burgundy text-limestone border border-burgundy hover:bg-burgundy/90",
     outline: "bg-transparent text-limestone border border-limestone hover:bg-limestone/10",
+    outlineDark: "bg-transparent text-charcoal border border-charcoal hover:bg-charcoal/10",
   };
 
   const combinedStyles = `${baseStyles} ${variantStyles[variant]} ${className}`;

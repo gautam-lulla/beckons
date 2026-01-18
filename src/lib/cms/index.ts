@@ -1,4 +1,3 @@
-import { ApolloClient, NormalizedCacheObject } from "@apollo/client";
 import {
   LOGIN,
   CREATE_CONTENT_TYPE,
@@ -47,8 +46,37 @@ interface MediaUploadResult {
   mimeType: string;
 }
 
+// GraphQL mutation response types
+interface LoginResponse {
+  login: {
+    accessToken: string;
+    refreshToken: string;
+    user: { id: string; email: string };
+  } | null;
+}
+
+interface ContentTypeResponse {
+  contentTypeBySlug: ContentType | null;
+}
+
+interface CreateContentTypeResponse {
+  createContentType: ContentType | null;
+}
+
+interface CreateContentEntryResponse {
+  createContentEntry: ContentEntry | null;
+}
+
+interface UpdateContentEntryResponse {
+  updateContentEntry: ContentEntry | null;
+}
+
+interface UploadMediaResponse {
+  uploadMedia: MediaUploadResult | null;
+}
+
 export class CMSClient {
-  private client: ApolloClient<NormalizedCacheObject>;
+  private client: ReturnType<typeof getAuthenticatedClient>;
   private token: string;
 
   constructor(token: string) {
@@ -59,7 +87,7 @@ export class CMSClient {
   static async login(email: string, password: string): Promise<CMSClient> {
     const tempClient = getAuthenticatedClient("");
 
-    const { data } = await tempClient.mutate({
+    const { data } = await tempClient.mutate<LoginResponse>({
       mutation: LOGIN,
       variables: {
         input: { email, password },
@@ -74,7 +102,7 @@ export class CMSClient {
   }
 
   async getContentTypeBySlug(slug: string): Promise<ContentType | null> {
-    const { data } = await this.client.query({
+    const { data } = await this.client.query<ContentTypeResponse>({
       query: GET_CONTENT_TYPE_BY_SLUG,
       variables: {
         slug,
@@ -90,7 +118,7 @@ export class CMSClient {
     slug: string,
     fields: ContentTypeField[]
   ): Promise<ContentType> {
-    const { data } = await this.client.mutate({
+    const { data } = await this.client.mutate<CreateContentTypeResponse>({
       mutation: CREATE_CONTENT_TYPE,
       variables: {
         input: {
@@ -112,16 +140,16 @@ export class CMSClient {
   async createContentEntry(
     contentTypeId: string,
     slug: string,
-    data: Record<string, unknown>
+    entryData: Record<string, unknown>
   ): Promise<ContentEntry> {
-    const { data: result } = await this.client.mutate({
+    const { data: result } = await this.client.mutate<CreateContentEntryResponse>({
       mutation: CREATE_CONTENT_ENTRY,
       variables: {
         input: {
           contentTypeId,
           organizationId: ORGANIZATION_ID,
           slug,
-          data,
+          data: entryData,
         },
       },
     });
@@ -135,13 +163,13 @@ export class CMSClient {
 
   async updateContentEntry(
     id: string,
-    data: Record<string, unknown>
+    entryData: Record<string, unknown>
   ): Promise<ContentEntry> {
-    const { data: result } = await this.client.mutate({
+    const { data: result } = await this.client.mutate<UpdateContentEntryResponse>({
       mutation: UPDATE_CONTENT_ENTRY,
       variables: {
         id,
-        input: { data },
+        input: { data: entryData },
       },
     });
 
@@ -160,7 +188,7 @@ export class CMSClient {
     // Convert buffer to base64 for upload
     const base64 = file.toString("base64");
 
-    const { data } = await this.client.mutate({
+    const { data } = await this.client.mutate<UploadMediaResponse>({
       mutation: UPLOAD_MEDIA,
       variables: {
         input: {
