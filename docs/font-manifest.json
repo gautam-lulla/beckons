@@ -1,0 +1,23 @@
+{
+  "fonts": [
+    {
+      "family": "Reckless Standard XL",
+      "source": "custom",
+      "weights": [400],
+      "styles": ["normal", "italic"],
+      "status": "needs-setup",
+      "usage": "headings"
+    },
+    {
+      "family": "Helvetica Now Text",
+      "source": "custom",
+      "weights": [400, 500, 700],
+      "styles": ["normal"],
+      "status": "needs-setup",
+      "usage": "body, subheadings, buttons, links"
+    }
+  ],
+  "missingFonts": ["Reckless Standard XL", "Helvetica Now Text"],
+  "fontHandling": "CUSTOM",
+  "notes": "Both fonts are custom/licensed fonts. Will need font files or fallbacks."
+}
