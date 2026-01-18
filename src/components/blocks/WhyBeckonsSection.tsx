@@ -86,6 +86,9 @@ export function WhyBeckonsSection({
                     alt=""
                     fill
                     className="object-contain"
+                    data-cms-entry={entry}
+                    data-cms-field={`whyBeckons.cards[${index}].overlayIcon`}
+                    data-cms-type="image"
                   />
                 </div>
               </div>

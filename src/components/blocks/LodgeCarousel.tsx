@@ -15,11 +15,6 @@ export function LodgeCarousel({ entry, title, lodges }: LodgeCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentLodge = lodges[currentIndex];
 
-  // Debug: log carousel state
-  console.log("LodgeCarousel - Total lodges:", lodges.length);
-  console.log("LodgeCarousel - Current index:", currentIndex);
-  console.log("LodgeCarousel - Current lodge:", currentLodge?.name, currentLodge?.imageUrl);
-
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? lodges.length - 1 : prev - 1));
   };
@@ -86,6 +81,9 @@ export function LodgeCarousel({ entry, title, lodges }: LodgeCarouselProps) {
               alt=""
               fill
               className="object-contain"
+              data-cms-entry={entry}
+              data-cms-field={`lodgeCarousel.lodges[${currentIndex}].iconUrl`}
+              data-cms-type="image"
             />
           </div>
         )}

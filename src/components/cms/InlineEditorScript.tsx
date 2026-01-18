@@ -23,20 +23,12 @@ export function InlineEditorScript({
   const isEditMode = searchParams.get('edit') === 'true';
 
   useEffect(() => {
-    console.log('[InlineEditorScript] isEditMode:', isEditMode, 'orgSlug:', orgSlug);
-
-    if (!isEditMode) {
-      console.log('[InlineEditorScript] Not in edit mode, skipping');
-      return;
-    }
+    if (!isEditMode) return;
 
     // Check if script is already loaded
     if (document.querySelector('script[data-cms-editor]')) {
-      console.log('[InlineEditorScript] Script already loaded, skipping');
       return;
     }
-
-    console.log('[InlineEditorScript] Loading inline editor script...');
 
     // Dynamically inject the editor script
     const script = document.createElement('script');
@@ -48,10 +40,6 @@ export function InlineEditorScript({
     }
     script.dataset.cmsEditor = 'true';
     script.defer = true;
-
-    script.onload = () => console.log('[InlineEditorScript] Script loaded successfully');
-    script.onerror = (e) => console.error('[InlineEditorScript] Script failed to load:', e);
-
     document.head.appendChild(script);
 
     return () => {
