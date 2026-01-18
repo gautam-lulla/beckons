@@ -30,7 +30,8 @@ export default function RootLayout({
         <div className="max-w-[1920px] mx-auto relative">{children}</div>
         <script
           src="https://backend-production-162b.up.railway.app/inline-editor.js"
-          data-cms-url="https://backend-production-162b.up.railway.app"
+          data-cms-org="beckons"
+          data-cms-api="https://backend-production-162b.up.railway.app"
           defer
         />
       </body>
