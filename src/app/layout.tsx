@@ -55,7 +55,7 @@ export default function RootLayout({
           <InlineEditorScript
             orgSlug="beckons"
             apiBase="https://backend-production-162b.up.railway.app"
-            adminBase="https://admin-gules-psi-18.vercel.app"
+            adminBase="https://sphereos.vercel.app"
           />
         </Suspense>
       </body>
