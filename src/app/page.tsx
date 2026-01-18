@@ -1,65 +1,133 @@
-import Image from "next/image";
+import { getContentEntry, getFooterContent } from "@/lib/content";
+import {
+  HeroSection,
+  IntroSection,
+  VideoMaskSection,
+  AboutSection,
+  LodgeCarousel,
+  WhyBeckonsSection,
+  StickyInquireButton,
+} from "@/components/blocks";
+import { Footer } from "@/components/layout";
+import type { FooterContent } from "@/types/content";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+interface HomePageData {
+  hero: {
+    logoUrl: string;
+    logoAlt: string;
+    videoUrl?: string;
+    posterUrl?: string;
+  };
+  intro: {
+    headline: string;
+    ctaText: string;
+    ctaUrl: string;
+  };
+  videoMask: {
+    imageUrl: string;
+  };
+  about: {
+    title: string;
+    titleItalicPart?: string;
+    body: string;
+    ctaText: string;
+    ctaUrl: string;
+  };
+  lodgeCarousel: {
+    title: string;
+    lodges: Array<{
+      name: string;
+      region: string;
+      country: string;
+      imageUrl: string;
+      iconUrl?: string;
+    }>;
+  };
+  whyBeckons: {
+    title: string;
+    description: string;
+    cards: Array<{
+      title: string;
+      description: string;
+      imageUrl: string;
+    }>;
+  };
+  stickyButtonText: string;
+}
+
+interface PageEntry {
+  title: string;
+  data: HomePageData;
+  metaTitle: string;
+  metaDescription: string;
+}
+
+export default async function HomePage() {
+  const [pageEntry, footerContent] = await Promise.all([
+    getContentEntry<PageEntry>("page-content", "home"),
+    getFooterContent<FooterContent>(),
+  ]);
+
+  if (!pageEntry) {
+    return <div>Loading...</div>;
+  }
+
+  const { data } = pageEntry;
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main className="min-h-screen">
+      <StickyInquireButton
+        entry="home"
+        buttonText={data.stickyButtonText}
+        href="/inquire"
+      />
+
+      <HeroSection
+        entry="home"
+        logoUrl={data.hero.logoUrl}
+        logoAlt={data.hero.logoAlt}
+        videoUrl={data.hero.videoUrl}
+        posterUrl={data.hero.posterUrl}
+      />
+
+      <IntroSection
+        entry="home"
+        headline={data.intro.headline}
+        ctaText={data.intro.ctaText}
+        ctaUrl={data.intro.ctaUrl}
+      />
+
+      <VideoMaskSection
+        entry="home"
+        imageUrl={data.videoMask.imageUrl}
+        maskUrl=""
+      />
+
+      <AboutSection
+        entry="home"
+        title={data.about.title}
+        titleItalicPart={data.about.titleItalicPart}
+        body={data.about.body}
+        ctaText={data.about.ctaText}
+        ctaUrl={data.about.ctaUrl}
+      />
+
+      <LodgeCarousel
+        entry="home"
+        title={data.lodgeCarousel.title}
+        lodges={data.lodgeCarousel.lodges}
+      />
+
+      <WhyBeckonsSection
+        entry="home"
+        title={data.whyBeckons.title}
+        description={data.whyBeckons.description}
+        cards={data.whyBeckons.cards}
+      />
+
+      {footerContent && <Footer content={footerContent} />}
+    </main>
   );
 }
