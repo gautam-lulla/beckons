@@ -29,8 +29,8 @@ export default function RootLayout({
       <body className="antialiased">
         <div className="max-w-[1920px] mx-auto relative">{children}</div>
         <script
-          src="https://cms.sphereos.dev/editor.js"
-          data-cms-url="https://cms.sphereos.dev"
+          src="https://backend-production-162b.up.railway.app/editor.js"
+          data-cms-url="https://backend-production-162b.up.railway.app"
           defer
         />
       </body>
