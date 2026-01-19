@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "../ui/icons";
 
-// Diamond overlay SVG (compass icon)
-const DIAMOND_SVG_URL = "https://pub-21daddc5e64940d8bfac214df111cd0c.r2.dev/02c475cf-7fcc-4938-bb8c-502ff0641230/original.svg";
+// Diamond overlay SVG (local path)
+const DIAMOND_SVG_URL = "/icons/beckons-diamond.svg";
 import type { WhyBeckonsCard } from "@/types/content";
 
 interface WhyBeckonsSectionProps {
