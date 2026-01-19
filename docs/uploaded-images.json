@@ -1,0 +1,117 @@
+{
+  "uploadedAt": "2026-01-19T15:10:08.356Z",
+  "images": [
+    {
+      "filename": "about-card-image-1.jpg",
+      "mimeType": "image/jpeg",
+      "alt": "Places Worth Reaching - lodge building",
+      "usedIn": [
+        {
+          "entry": "home",
+          "field": "hero.posterUrl"
+        },
+        {
+          "entry": "home",
+          "field": "whyBeckons.cards[0].imageUrl"
+        }
+      ],
+      "r2Url": null
+    },
+    {
+      "filename": "about-card-image-2.jpg",
+      "mimeType": "image/jpeg",
+      "alt": "Built for where we are - hand on door handle",
+      "usedIn": [
+        {
+          "entry": "home",
+          "field": "whyBeckons.cards[1].imageUrl"
+        }
+      ],
+      "r2Url": "https://pub-21daddc5e64940d8bfac214df111cd0c.r2.dev/0a9eff94-3ccf-42c7-b620-58a31646c877/original.jpg"
+    },
+    {
+      "filename": "about-card-image-3.jpg",
+      "mimeType": "image/jpeg",
+      "alt": "Intentionally local",
+      "usedIn": [
+        {
+          "entry": "home",
+          "field": "whyBeckons.cards[2].imageUrl"
+        }
+      ],
+      "r2Url": null
+    },
+    {
+      "filename": "lodge-carousel-bg.jpg",
+      "mimeType": "image/jpeg",
+      "alt": "Southern Ocean Lodge carousel background",
+      "usedIn": [
+        {
+          "entry": "home",
+          "field": "lodges.backgroundImageUrl"
+        },
+        {
+          "entry": "inquire",
+          "field": "backgroundImageUrl"
+        },
+        {
+          "entry": "email-subscription",
+          "field": "backgroundImageUrl"
+        }
+      ],
+      "r2Url": null
+    },
+    {
+      "filename": "logo-full.svg",
+      "mimeType": "image/svg+xml",
+      "alt": "Beckons full logo",
+      "usedIn": [
+        {
+          "entry": "global-settings",
+          "field": "logoUrl"
+        },
+        {
+          "entry": "home",
+          "field": "hero.logoUrl"
+        }
+      ],
+      "r2Url": "https://pub-21daddc5e64940d8bfac214df111cd0c.r2.dev/9449ddd0-b979-40d6-9697-26c42fc6d913/original.svg"
+    },
+    {
+      "filename": "logo-icon.svg",
+      "mimeType": "image/svg+xml",
+      "alt": "Beckons compass icon",
+      "usedIn": [
+        {
+          "entry": "global-settings",
+          "field": "logoIconUrl"
+        },
+        {
+          "entry": "global-footer",
+          "field": "logoUrl"
+        }
+      ],
+      "r2Url": "https://pub-21daddc5e64940d8bfac214df111cd0c.r2.dev/02c475cf-7fcc-4938-bb8c-502ff0641230/original.svg"
+    },
+    {
+      "filename": "video-mask-shape.svg",
+      "mimeType": "image/svg+xml",
+      "alt": "Diamond mask shape",
+      "usedIn": [
+        {
+          "entry": "home",
+          "field": "videoMaskImageUrl"
+        },
+        {
+          "entry": "inquire",
+          "field": "videoMaskImageUrl"
+        },
+        {
+          "entry": "email-subscription",
+          "field": "videoMaskImageUrl"
+        }
+      ],
+      "r2Url": "https://pub-21daddc5e64940d8bfac214df111cd0c.r2.dev/161d6be4-0d42-4906-844b-e4918afa21c5/original.svg"
+    }
+  ]
+}
