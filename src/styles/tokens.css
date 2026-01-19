@@ -37,11 +37,11 @@
   /* =============================================
      TYPOGRAPHY - FONT FAMILIES
      ============================================= */
-  --font-heading: 'Playfair Display', serif;
+  --font-heading: 'Reckless Standard XL', serif;
   --font-body: 'Inter', sans-serif;
 
   /* =============================================
-     TYPOGRAPHY - FONT SIZES
+     TYPOGRAPHY - FONT SIZES (Desktop)
      ============================================= */
   --font-size-h1: 95px;
   --font-size-h2: 64px;
@@ -54,6 +54,21 @@
   --font-size-subheading-s: 12px;
   --font-size-button: 14px;
   --font-size-link: 20px;
+
+  /* =============================================
+     TYPOGRAPHY - FONT SIZES (Mobile)
+     ============================================= */
+  --font-size-h1-mobile: 34px;
+  --font-size-h2-mobile: 30px;
+  --font-size-h3-mobile: 24px;
+  --font-size-h4-mobile: 18px;
+  --font-size-h5-mobile: 16px;
+  --font-size-body-m-mobile: 16px;
+  --font-size-body-xs-mobile: 14px;
+  --font-size-subheading-m-mobile: 14px;
+  --font-size-subheading-s-mobile: 12px;
+  --font-size-button-mobile: 12px;
+  --font-size-link-mobile: 16px;
 
   /* =============================================
      TYPOGRAPHY - FONT WEIGHTS

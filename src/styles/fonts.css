@@ -1,0 +1,41 @@
+/* =============================================
+   CUSTOM FONT DEFINITIONS
+   Reckless Standard XL - Headings
+   Inter - Body/UI
+   ============================================= */
+
+/* Reckless Standard XL - Regular */
+@font-face {
+  font-family: 'Reckless Standard XL';
+  src: url('/fonts/RecklessStandardXL-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Reckless Standard XL - Italic */
+@font-face {
+  font-family: 'Reckless Standard XL';
+  src: url('/fonts/RecklessStandardXL-RegularItalic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Inter - Variable Font */
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Inter - Variable Font Italic */
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
