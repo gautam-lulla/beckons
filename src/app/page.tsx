@@ -57,15 +57,24 @@ interface HomePageData {
   stickyButtonText: string;
 }
 
+interface PageEntry {
+  title: string;
+  data: HomePageData;
+  metaTitle: string;
+  metaDescription: string;
+}
+
 export default async function HomePage() {
-  const [data, footerContent] = await Promise.all([
-    getContentEntry<HomePageData>("page-content", "home"),
+  const [pageEntry, footerContent] = await Promise.all([
+    getContentEntry<PageEntry>("page-content", "home"),
     getFooterContent<FooterContent>(),
   ]);
 
-  if (!data) {
+  if (!pageEntry) {
     return <div>Loading...</div>;
   }
+
+  const { data } = pageEntry;
 
   return (
     <main className="min-h-screen">
