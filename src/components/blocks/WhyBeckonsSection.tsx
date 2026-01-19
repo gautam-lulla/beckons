@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "../ui/icons";
 
-// Diamond overlay SVG from Figma
-const DIAMOND_SVG_URL = "https://www.figma.com/api/mcp/asset/4da2e381-e519-413f-af88-25f0733663c7";
+// Diamond overlay SVG (compass icon)
+const DIAMOND_SVG_URL = "https://pub-21daddc5e64940d8bfac214df111cd0c.r2.dev/02c475cf-7fcc-4938-bb8c-502ff0641230/original.svg";
 import type { WhyBeckonsCard } from "@/types/content";
 
 interface WhyBeckonsSectionProps {
