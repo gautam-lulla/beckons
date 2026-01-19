@@ -4,8 +4,12 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "../ui/icons";
 
-// Diamond overlay SVG (local path)
-const DIAMOND_SVG_URL = "/icons/beckons-diamond.svg";
+// Diamond overlay SVGs - each card has a different icon
+const DIAMOND_ICONS = [
+  "/icons/diamond-left.svg",
+  "/icons/diamond-center.svg",
+  "/icons/diamond-right.svg",
+];
 import type { WhyBeckonsCard } from "@/types/content";
 
 interface WhyBeckonsSectionProps {
@@ -79,16 +83,13 @@ export function WhyBeckonsSection({
                   data-cms-field={`whyBeckons.cards[${index}].imageUrl`}
                   data-cms-type="image"
                 />
-                {/* Diamond Overlay */}
+                {/* Diamond Overlay - each card has a different icon */}
                 <div className="relative z-10 w-[140px] h-[140px]">
                   <Image
-                    src={DIAMOND_SVG_URL}
+                    src={DIAMOND_ICONS[index % DIAMOND_ICONS.length]}
                     alt=""
                     fill
                     className="object-contain"
-                    data-cms-entry={entry}
-                    data-cms-field={`whyBeckons.cards[${index}].overlayIcon`}
-                    data-cms-type="image"
                   />
                 </div>
               </div>
