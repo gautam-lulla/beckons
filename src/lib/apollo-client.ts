@@ -8,15 +8,16 @@ const CMS_GRAPHQL_URL = process.env.NEXT_PUBLIC_CMS_GRAPHQL_URL;
  * The cookie is set by middleware when ?edit=true is in the URL.
  *
  * This function safely handles both server and client contexts.
+ * For Next.js 15+, cookies() is async so we use a sync fallback.
  */
-function isEditMode(): boolean {
+async function isEditModeAsync(): Promise<boolean> {
   // Server-side: try to read from next/headers cookies
   if (typeof window === 'undefined') {
     try {
       // Dynamic import to avoid bundling next/headers in client code
       // eslint-disable-next-line @typescript-eslint/no-require-imports
       const { cookies } = require('next/headers');
-      const cookieStore = cookies();
+      const cookieStore = await cookies();
       return cookieStore.get('cms-edit-mode')?.value === 'true';
     } catch {
       // cookies() throws when not in a request context
@@ -33,12 +34,23 @@ function isEditMode(): boolean {
 }
 
 /**
+ * Synchronous edit mode check for module initialization.
+ * Returns false for safety - actual edit mode is handled per-request.
+ */
+function isEditModeSync(): boolean {
+  // Client-side: read from document.cookie
+  if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+    return document.cookie.includes('cms-edit-mode=true');
+  }
+  // Server-side at module init time: can't access cookies synchronously
+  return false;
+}
+
+/**
  * Create a fetch function that respects edit mode.
  * In edit mode, bypasses Next.js Data Cache to ensure fresh data.
  */
-function createFetch(): typeof fetch {
-  const editMode = isEditMode();
-
+function createFetch(editMode: boolean = false): typeof fetch {
   if (editMode) {
     // Edit mode: bypass cache for fresh data
     return (input, init) => fetch(input, { ...init, cache: 'no-store' });
@@ -70,12 +82,12 @@ const authLink = setContext((_, { headers }) => {
 
 /**
  * Get Apollo Client for queries.
- * Automatically bypasses cache when in edit mode (detected via cookie).
+ * For server components, use getApolloClientAsync for proper edit mode detection.
  */
-export function getApolloClient() {
+export function getApolloClient(editMode: boolean = false) {
   const httpLink = createHttpLink({
     uri: CMS_GRAPHQL_URL,
-    fetch: createFetch(),
+    fetch: createFetch(editMode),
   });
 
   return new ApolloClient({
@@ -89,17 +101,26 @@ export function getApolloClient() {
   });
 }
 
-// Legacy export for backward compatibility
-export const apolloClient = getApolloClient();
+/**
+ * Get Apollo Client with async edit mode detection.
+ * Use this in server components for proper cache handling.
+ */
+export async function getApolloClientAsync() {
+  const editMode = await isEditModeAsync();
+  return getApolloClient(editMode);
+}
+
+// Legacy export for backward compatibility - uses sync edit mode check
+export const apolloClient = getApolloClient(isEditModeSync());
 
 /**
  * Authenticated client for CMS write operations.
  * Also respects edit mode for cache bypass.
  */
-export function getAuthenticatedClient(token: string) {
+export function getAuthenticatedClient(token: string, editMode: boolean = false) {
   const authHttpLink = createHttpLink({
     uri: CMS_GRAPHQL_URL,
-    fetch: createFetch(),
+    fetch: createFetch(editMode),
     headers: {
       authorization: `Bearer ${token}`,
     },

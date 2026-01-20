@@ -6,10 +6,13 @@ import type { FooterContent } from "@/types/content";
 
 export const dynamic = "force-dynamic";
 
+// Flat data structure matching CMS field definitions
 interface InquirePageData {
   title: string;
   titleItalicPart?: string;
   subtitle: string;
+  metaTitle: string;
+  metaDescription: string;
   videoMaskImageUrl: string;
   firstNameLabel: string;
   lastNameLabel: string;
@@ -25,24 +28,16 @@ interface InquirePageData {
   submitButtonText: string;
 }
 
-interface PageEntry {
-  title: string;
-  data: InquirePageData;
-  metaTitle: string;
-  metaDescription: string;
-}
-
 export default async function InquirePage() {
-  const [pageEntry, footerContent] = await Promise.all([
-    getContentEntry<PageEntry>("page-content", "inquire"),
+  const [data, footerContent] = await Promise.all([
+    getContentEntry<InquirePageData>("page-content", "inquire"),
     getFooterContent<FooterContent>(),
   ]);
 
-  if (!pageEntry) {
+  if (!data) {
     return <div>Loading...</div>;
   }
 
-  const { data } = pageEntry;
   const entry = "inquire";
 
   return (

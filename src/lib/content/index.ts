@@ -16,6 +16,79 @@ interface ContentEntryResponse {
   } | null;
 }
 
+// Transform flat CMS data to nested structure expected by components
+// This allows the CMS to use individual fields while keeping the frontend component API stable
+interface FlatHomeData {
+  title?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  heroLogoUrl?: string;
+  heroLogoAlt?: string;
+  heroVideoUrl?: string;
+  heroPosterUrl?: string;
+  introHeadline?: string;
+  introCtaText?: string;
+  introCtaUrl?: string;
+  aboutTitle?: string;
+  aboutTitleItalicPart?: string;
+  aboutBody?: string;
+  aboutCtaText?: string;
+  aboutCtaUrl?: string;
+  videoMaskImageUrl?: string;
+  whyBeckonsTitle?: string;
+  whyBeckonsDescription?: string;
+  whyBeckonsCards?: unknown[];
+  lodgeCarouselTitle?: string;
+  lodgeCarouselLodges?: unknown[];
+  stickyButtonText?: string;
+}
+
+function transformHomePageData(flat: FlatHomeData): unknown {
+  return {
+    title: flat.title,
+    metaTitle: flat.metaTitle,
+    metaDescription: flat.metaDescription,
+    hero: {
+      logoUrl: flat.heroLogoUrl,
+      logoAlt: flat.heroLogoAlt,
+      videoUrl: flat.heroVideoUrl,
+      posterUrl: flat.heroPosterUrl,
+    },
+    intro: {
+      headline: flat.introHeadline,
+      ctaText: flat.introCtaText,
+      ctaUrl: flat.introCtaUrl,
+    },
+    videoMask: {
+      imageUrl: flat.videoMaskImageUrl,
+    },
+    about: {
+      title: flat.aboutTitle,
+      titleItalicPart: flat.aboutTitleItalicPart,
+      body: flat.aboutBody,
+      ctaText: flat.aboutCtaText,
+      ctaUrl: flat.aboutCtaUrl,
+    },
+    whyBeckons: {
+      title: flat.whyBeckonsTitle,
+      description: flat.whyBeckonsDescription,
+      cards: flat.whyBeckonsCards,
+    },
+    lodgeCarousel: {
+      title: flat.lodgeCarouselTitle,
+      lodges: flat.lodgeCarouselLodges,
+    },
+    stickyButtonText: flat.stickyButtonText,
+  };
+}
+
+// Check if data appears to be flat CMS format (has heroLogoUrl instead of hero.logoUrl)
+function isFlatFormat(data: unknown): data is FlatHomeData {
+  if (!data || typeof data !== 'object') return false;
+  const d = data as Record<string, unknown>;
+  return 'heroLogoUrl' in d || 'introHeadline' in d || 'aboutTitle' in d;
+}
+
 // Cache for content type IDs
 const contentTypeIdCache: Record<string, string> = {};
 
@@ -57,7 +130,15 @@ export async function getContentEntry<T>(
       fetchPolicy: "network-only", // Force fresh fetch
     });
 
-    return data?.contentEntryBySlug?.data as T;
+    const rawData = data?.contentEntryBySlug?.data;
+
+    // Transform flat CMS data to nested format for homepage
+    // This allows the CMS to use individual fields while keeping the component API stable
+    if (contentTypeSlug === "page-content" && entrySlug === "home" && isFlatFormat(rawData)) {
+      return transformHomePageData(rawData) as T;
+    }
+
+    return rawData as T;
   } catch (error) {
     console.error(`Failed to fetch content entry: ${contentTypeSlug}/${entrySlug}`, error);
     return null;
